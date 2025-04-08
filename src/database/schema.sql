@@ -22,6 +22,6 @@ INSERT INTO usuarios (name, email, password) VALUES
     ('Fernanda', 'fernanda@gmail.com', 'amods');
 
 INSERT INTO post (title, content, user_id) VALUES 
-    ('Post 1', 'Conteúdo', 1),
-    ('Post 2', 'Conteúdo', 2),
-    ('Post 2', 'Conteúdo', 3);
+    ('Post 1', 'Conteudo', 1),
+    ('Post 2', 'Conteudo', 2),
+    ('Post 2', 'Conteudo', 3);
