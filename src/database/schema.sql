@@ -17,9 +17,9 @@ CREATE TABLE post (
 );
 
 INSERT INTO usuarios (name, email, password) VALUES 
-    ('Lucca', 'lucca@gmail.com', 'amods'),
-    ('Rafael', 'rafael@gmail.com', 'amods'),
-    ('Fernanda', 'fernanda@gmail.com', 'amods');
+    ('Andre', 'andre@gmail.com', 'amods'),
+    ('Carlos', 'carlos@gmail.com', 'amods'),
+    ('Lucca', 'lucca@gmail.com', 'amods');
 
 INSERT INTO post (title, content, user_id) VALUES 
     ('Post 1', 'Conteudo', 1),
