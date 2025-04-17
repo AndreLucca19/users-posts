@@ -5,13 +5,13 @@ const postController = require("../controllers/postControllers");
 /**
  * @swagger
  * tags:
- *   name: Houses
+ *   name: Posts
  *   description: Gerenciamento de Posts
  */
 
 /**
  * @swagger
- * /api/posts:
+ * /posts:
  *   get:
  *     summary: Lista todos os Posts
  *     tags: [Posts]
@@ -23,7 +23,7 @@ router.get("/", postController.getAllPosts);
 
 /**
  * @swagger
- * /api/posts/{id}:
+ * /posts/{id}:
  *   get:
  *     summary: Busca Post por ID
  *     tags: [Posts]
@@ -43,7 +43,7 @@ router.get("/:id", postController.getById);
 
 /**
  * @swagger
- * /api/posts/{id}:
+ * /posts/{id}:
  *   post:
  *     summary: Cria um novo Post
  *     tags: [Posts]
@@ -66,7 +66,7 @@ router.post("/", postController.createPost);
 
 /**
  * @swagger
- * /api/posts/{id}:
+ * /posts/{id}:
  *   put:
  *     summary: Atualiza um Post
  *     tags: [Posts]
@@ -95,7 +95,7 @@ router.put("/:id", postController.editPost);
 
 /**
  * @swagger
- * /api/posts/{id}:
+ * /posts/{id}:
  *   delete:
  *     summary: Deleta um Post
  *     tags: [Posts]

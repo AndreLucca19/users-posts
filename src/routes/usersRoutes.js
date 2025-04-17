@@ -12,25 +12,19 @@ const upload = require("../config/upload");
 
 /**
  * @swagger
- * /api/users:
+ * /users:
  *   get:
- *     summary: Lista de todos os Usuarios
+ *     summary: Lista todos os usuários
  *     tags: [Users]
- *     parameters:
- *       - in: query
- *         name: name
- *         schema:
- *           type: string
- *         description: Filtrar por nome
  *     responses:
  *       200:
- *         description: Lista de Usuarios
+ *         description: Lista de usuários
  */
-router.get('/', UserController.getAllUsers);
+router.get("/users", UserController.getAllUsers);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /users/{id}:
  *   get:
  *     summary: Busca users por ID
  *     tags: [Users]
@@ -50,7 +44,7 @@ router.get('/:id', UserController.getUserById);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /users/{id}:
  *   delete:
  *     summary: Deleta um Usuario
  *     tags: [Users]
@@ -68,7 +62,7 @@ router.delete('/:id', UserController.deleteUser);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /users/{id}:
  *   put:
  *     summary: Atualiza um Usuario
  *     tags: [Users]
@@ -97,10 +91,10 @@ router.put('/:id', UserController.updateUser);
 
 /**
  * @swagger
- * /api/wizards:
+ * /users:
  *   post:
- *     summary: Cria um novo bruxo
- *     tags: [Wizards]
+ *     summary: Cria um novo usuario
+ *     tags: [Users]
  *     requestBody:
  *       required: true
  *       content:
