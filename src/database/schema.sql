@@ -1,3 +1,5 @@
+DROP DATABASE IF exists users;
+
 CREATE DATABASE users;
 
 \c users;

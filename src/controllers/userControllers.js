@@ -2,8 +2,7 @@ const UserModel = require('../models/UserModel');
 
 const getAllUsers = async (req, res) => {
     try {
-        const {name} = req.query;
-        const users = await UserModel.getUsuarios(name);
+        const users = await UserModel.getUsers();
         res.json(users);
     } catch (error) {
         res.status(500).json({ error: 'Erro ao buscar usuários.' });
@@ -13,19 +12,19 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req, res) => {
     const { id } = req.params;
     try {
-        const user = await UserModel.getUsuariosById(id);
+        const user = await UserModel.getUserById(id);
         if (!user) {
-            return res.status(404).json({ error: 'Usuário não encontrado.' });
+            return res.status(404).json({ error: 'User not found.' });
         }
         res.json(user);
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao buscar usuário.' });
+        res.status(500).json({ error: 'Error fetching user.' });
     }
 }
 
 const deleteUser = async (req, res) => {
     try {
-        const result = await UserModel.deleteUsuarios(req.params.id);
+        const result = await UserModel.deleteUsers(req.params.id);
         if (result.error) {
             return res.status(404).json(result);
         }
