@@ -2,33 +2,26 @@ const express = require('express');
 const router = express.Router();
 const UserController = require('../controllers/userControllers');
 const upload = require("../config/upload");
-const apiKeyMiddleware = require("../config/apiKey"); // 🔐
+const apiKeyMiddleware = require("../config/apiKey"); // Middleware para autenticação por API Key
 
-router.use(apiKeyMiddleware); // 🔒 Aplica para todas as rotas abaixo
+// Aplica o middleware de API Key para todas as rotas abaixo
+router.use(apiKeyMiddleware);
+
 /**
  * @swagger
  * tags:
  *   name: Users
- *   description: Gerenciamento de Usuarios
+ *   description: Gerenciamento de Usuários
  */
 
-/**
- * @swagger
- * /users:
- *   get:
- *     summary: Lista todos os usuários
- *     tags: [Users]
- *     responses:
- *       200:
- *         description: Lista de usuários
- */
+// Rota para listar todos os usuários
 router.get("/users", UserController.getAllUsers);
 
 /**
  * @swagger
  * /users/{id}:
  *   get:
- *     summary: Busca users por ID
+ *     summary: Busca usuário por ID
  *     tags: [Users]
  *     parameters:
  *       - in: path
@@ -38,35 +31,20 @@ router.get("/users", UserController.getAllUsers);
  *           type: integer
  *     responses:
  *       200:
- *         description: Usuario encontrado
+ *         description: Usuário encontrado
  *       404:
- *         description: Usuario não encontrado
+ *         description: Usuário não encontrado
  */
-router.get('/:id', UserController.getUserById);
+router.get("/users/:id", UserController.getUserById);
 
-/**
- * @swagger
- * /users/{id}:
- *   delete:
- *     summary: Deleta um Usuario
- *     tags: [Users]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *     responses:
- *       200:
- *         description: Usuario deletado
- */
-router.delete('/:id', UserController.deleteUser);
+// Rota para deletar um usuário por ID
+router.delete("/users/:id", UserController.deleteUser);
 
 /**
  * @swagger
  * /users/{id}:
  *   put:
- *     summary: Atualiza um Usuario
+ *     summary: Atualiza um usuário
  *     tags: [Users]
  *     parameters:
  *       - in: path
@@ -83,19 +61,19 @@ router.delete('/:id', UserController.deleteUser);
  *             properties:
  *               name:
  *                 type: string
- *               house_id:
- *                 type: integer
+ *               email:
+ *                 type: string
  *     responses:
  *       200:
- *         description: Usuario atualizado
+ *         description: Usuário atualizado
  */
-router.put('/:id', UserController.updateUser);
+router.put("/users/:id", UserController.updateUser);
 
 /**
  * @swagger
  * /users:
  *   post:
- *     summary: Cria um novo usuario
+ *     summary: Cria um novo usuário
  *     tags: [Users]
  *     requestBody:
  *       required: true
@@ -106,16 +84,15 @@ router.put('/:id', UserController.updateUser);
  *             properties:
  *               name:
  *                 type: string
- *               house_id:
- *                 type: integer
+ *               email:
+ *                 type: string
  *               photo:
  *                 type: string
  *                 format: binary
  *     responses:
  *       201:
- *         description: Usuario criado
+ *         description: Usuário criado
  */
-
-router.post('/', upload.single('photo'), UserController.createUser);
+router.post("/users", upload.single("photo"), UserController.createUser);
 
 module.exports = router;
