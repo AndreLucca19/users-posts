@@ -23,11 +23,11 @@ const getUserById = async (id) => {
     }
 };
 
-const createUser = async (name, email, photo) => {
+const createUser = async (name, email, password) => {
     try {
         const result = await pool.query(
-            "INSERT INTO usuarios (name, email, photo) VALUES ($1, $2, $3) RETURNING *",
-            [name, email, photo]
+            "INSERT INTO usuarios (name, email, password) VALUES ($1, $2, $3) RETURNING *",
+            [name, email, password]
         );
         return result.rows[0];
     } catch (error) {
